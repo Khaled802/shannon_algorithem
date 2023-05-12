@@ -98,7 +98,7 @@ def decode(encoded: str, codeMap: dict)-> str:
     :return: the encoded sentence
     '''
     decode = []
-    decodeMap = dict(reverse_dict(codeMap))
+    decodeMap = reverse_dict(codeMap)
     code = ''
     for char in encoded:
         code = code + char
