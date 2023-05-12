@@ -87,7 +87,7 @@ def encode(sentence: str, codeMap: dict)-> list:
     encoded = []
     for char in sentence:
         encoded.append(codeMap[char])
-    return encoded
+    return ''.join(encoded)
 
 
 def decode(encoded: str, codeMap: dict)-> str:
@@ -98,9 +98,14 @@ def decode(encoded: str, codeMap: dict)-> str:
     :return: the encoded sentence
     '''
     decode = []
-    decodeMap = reverse_dict(codeMap)
+    decodeMap = dict(reverse_dict(codeMap))
+    code = ''
     for char in encoded:
-        decode.append(decodeMap[char])
-    return decode
+        code = code + char
+        if(code in decodeMap):
+            decode.append(decodeMap[code])
+            code = ''
+            
+    return ''.join(decode)
 
     
